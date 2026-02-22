@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Profile</title>
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; transition:0.4s ease; }
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background-image: url('https://img.freepik.com/free-photo/anime-night-sky-illustration_23-2151684328.jpg?semt=ais_hybrid&w=740&q=80'); /* your original bg */
+    background-size: cover;
+	background-attachment: fixed;
+    background-position: center 25%;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    opacity: 0; /* start invisible for fade-in */
+    transition: opacity 0.4s ease;
+}
+body.fade-out {
+    opacity: 0;
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top:0;
+    width:100%;
+    background-color:black;
+    padding:25px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+}
+
+.logo { color:white; font-size:32px; font-weight:bold; }
+.nav-links a { color:white; text-decoration:none; margin-left:40px; font-size:22px; font-weight:bold; }
+.nav-links a:hover { color:gray; }
+
+/* CONTENT */
+.content { padding-top:170px; }
+
+/* PROFILE SECTION */
+.profile-section {
+    margin-top:80px;
+    display:flex;
+    justify-content:flex-start;
+    gap:140px;
+    align-items:flex-start;
+    padding-left:10%;
+    padding-right:10%;
+    flex-wrap:wrap;
+    opacity:0;
+    transform:translateY(30px);
+    transition:opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* PROFILE PIC */
+.profile-pic {
+    width:370px;
+    height:370px;
+    border:8px solid black;
+    border-radius:50%;
+    overflow:hidden;
+    opacity:1;
+}
+
+.profile-pic img { width:100%; height:100%; object-fit:cover; }
+
+/* PROFILE INFO */
+.profile-info {
+    max-width:750px;
+}
+
+.profile-info h2 { font-size:54px; margin-bottom:30px; word-wrap:break-word; }
+.profile-info p { font-size:28px; margin-bottom:18px; }
+
+/* BALANCED BIO RECTANGLE */
+.bio-rectangle {
+    margin: 80px 10%;
+    background: white;
+    border: 6px solid black;
+    padding: 40px 60px;
+    font-size: 24px;
+    line-height: 1.9;
+
+    /* Rounded corners */
+    border-radius: 25px; /* Adjust the value for more or less curve */
+}
+
+/* ENVELOPE SECTION */
+.envelope-container {
+    margin-top:160px;
+    display:flex;
+    justify-content:center;
+    gap:80px;
+    flex-wrap:wrap;
+}
+
+.envelope-container .envelope {
+    width:320px;
+    height:200px;
+    position:relative;
+    background:#d94f4f;
+    border-radius:14px;
+    cursor:pointer;
+    overflow:hidden;
+    box-shadow:0 15px 30px rgba(0,0,0,0.3);
+    opacity:0;
+    transform:translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* FLAP */
+.envelope::before {
+    content:"";
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:#b63c3c;
+    clip-path: polygon(0 0, 50% 65%, 100% 0);
+    transform-origin: top;
+    transition: transform 0.6s ease;
+}
+
+/* PAPER */
+.paper {
+    position:absolute;
+    width:85%;
+    height:130%;
+    background:white;
+    top:100%;
+    left:7.5%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:26px;
+    border-radius:8px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    transition: top 0.6s ease;
+}
+
+/* HOVER ANIMATION */
+.envelope:hover::before { transform: rotateX(180deg); }
+.envelope:hover .paper { top:-50%; }
+
+</style>
+</head>
+
+<body>
+
+<div class="bg-layer" id="bgLayer"></div>
+
+<div class="navbar">
+    <div class="logo">My Profile</div>
+    <div class="nav-links">
+        <a href="index.html" id="backHome">Home</a>
+        <a href="profile3.html">Profile</a>
+    </div>
+</div>
+
+<div class="content">
+
+    <div class="profile-section">
+        <div>
+            <div class="profile-pic" data-id="profile1">
+                <img src="3.jpg" alt="Profile Picture">
+            </div>
+        </div>
+        <div class="profile-info">
+            <h2>Ishmael Isaac Q. Agarin</h2>
+            <p>Age: 13</p>
+            <p>Occupation: Student</p>
+            <p>Location: Philippines</p>
+        </div>
+    </div>
+
+    <div class="bio-rectangle">
+        <strong>About Me:</strong><br>
+        Hello, My name is Ishmael, and i enjoy playing Badminton, fishing with Da boys, and playing games with Da boys 
+		because I enjoy spending time with them. I wish to someday be a Robotics Engineer to show the world the 
+		things I can build, and inspire young learners who wishes the same.
+        <br><br>
+        Birthday: July 7 &nbsp; | &nbsp;
+        Favorite Movie/Series: Pacific Rim, My Hero Academia, Delicious in Dungeon &nbsp; | &nbsp;
+        Favorite color: Red, Green, Blue, Black &nbsp; | &nbsp;
+        Favorite food: Pork Adobo &nbsp; | &nbsp;
+        Hobby: Badminton, Fishing, Gaming &nbsp; | &nbsp;
+		School: Bulacan Ecumenical School &nbsp; | &nbsp;
+        Dream Job: Robotics Engineer
+    </div>
+
+    <div class="envelope-container">
+        <a href="memories3.html"><div class="envelope"><div class="paper">Memories</div></div></a>
+        <a href="achievements3.html"><div class="envelope"><div class="paper">Achievements</div></div></a>
+        <a href="photos3.html"><div class="envelope"><div class="paper">Photos</div></div></a>
+    </div>
+
+</div>
+
+<script>
+window.addEventListener("load", () => {
+    // Fade in content
+    document.body.style.opacity = "1";
+
+    // Menu links and envelopes
+    document.querySelectorAll(".nav-links a, .envelope-container a").forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            document.body.classList.add("fade-out");
+            setTimeout(() => {
+                window.location.href = link.href;
+            }, 400); // match CSS
+        });
+    });
+
+    // Animate profile section and bio rectangle
+    const sections = document.querySelectorAll(".profile-section, .bio-rectangle");
+    const envelopes = document.querySelectorAll(".envelope-container .envelope");
+    requestAnimationFrame(() => {
+        sections.forEach(sec => { sec.style.opacity = "1"; sec.style.transform = "translateY(0)"; });
+        envelopes.forEach((env,i) => setTimeout(() => { env.style.opacity="1"; env.style.transform="translateY(0)"; }, i*150));
+    });
+});
+</script>
+
+</body>
+</html>
