@@ -120,9 +120,13 @@ body.fade-out {
 }
 
 	.search-container {
-    text-align: center;
-    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* space between input & button */
+    margin: 30px auto; /* center & spacing from navbar */
+    width: fit-content;
 }
+   
 
 #searchInput {
     padding: 10px 15px;
@@ -146,9 +150,6 @@ body.fade-out {
     background: gray;
 }	
 
-	.search-container {
-    margin-bottom: 40px;
-}
 </style>
 </head>
 
@@ -159,12 +160,14 @@ body.fade-out {
     <div class="logo">My Profiles</div>
     <div class="nav-links">
         <a href="index.html">Home</a>
-		<button id="themeToggle" style="font-size:20px;padding:4px 9px;cursor:pointer;">Toggle Theme</button>
-		<div class="search-container">
+        <button id="themeToggle">Toggle Theme</button>
+    </div>
+</div>
+
+<!-- MOVE SEARCH BAR HERE, OUTSIDE NAVBAR -->
+<div class="search-container">
     <input type="text" id="searchInput" placeholder="Search profiles...">
     <button onclick="searchProfile()">Search</button>
-</div>
-    </div>
 </div>
 
 <div class="content">
@@ -282,6 +285,7 @@ function searchProfile() {
 
 </body>
 </html>
+
 
 
 
