@@ -145,6 +145,10 @@ body.fade-out {
 .search-container button:hover {
     background: gray;
 }	
+
+	.search-container {
+    margin-bottom: 40px;
+}
 </style>
 </head>
 
@@ -166,6 +170,16 @@ body.fade-out {
 <div class="content">
     <div class="page-title">HOME</div>
 
+    <!-- ✅ PUT SEARCH BAR HERE -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search profiles...">
+        <button onclick="searchProfile()">Search</button>
+    </div>
+
+    <div class="circle-grid">
+        ...
+
+	
     <div class="circle-grid">
         <div class="profile-circle" data-link="profile.html">
             <img src="1.jpg" alt="Profile 1">
@@ -268,6 +282,7 @@ function searchProfile() {
 
 </body>
 </html>
+
 
 
 
