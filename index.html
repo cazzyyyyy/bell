@@ -253,7 +253,7 @@ themeToggle.addEventListener('click', () => {
 
 	<script>
 function searchProfile() {
-    const input = document.getElementById("searchInput").value.trim().toUpperCase();
+    let input = document.getElementById("searchInput").value.trim().toUpperCase();
 
     // Secret hidden profile
     if (input === "LEVITICUS") {
@@ -261,41 +261,29 @@ function searchProfile() {
         return;
     }
 
-    // Normal profiles (example)
-    if (input === "CASSANDRA") {
-        window.location.href = "profile.html";
-        return;
+    // List of normal profiles
+    const profiles = {
+        "CASSANDRA": "profile.html",
+        "JASON": "profile2.html",
+        "ISHMAEL": "profile3.html",
+        "ALE": "profile4.html",
+        "DAVID": "profile5.html"
+    };
+
+    // Loop through profile names to find a match
+    for (let name in profiles) {
+        if (input.includes(name)) {
+            window.location.href = profiles[name];
+            return;
+        }
     }
 
-    // Normal profiles (example)
-    if (input === "JASON") {
-        window.location.href = "profile2.html";
-        return;
-    }
-
-    // Normal profiles (example)
-    if (input === "ISHMAEL") {
-        window.location.href = "profile3.html";
-        return;
-    }
-
-// Normal profiles (example)
-    if (input === "ALE") {
-        window.location.href = "profile4.html";
-        return;
-    }
-
-// Normal profiles (example)
-    if (input === "DAVID") {
-        window.location.href = "profile5.html";
-        return;
-    }
-
-
-</script>
+    alert("Profile not found.");
+}
 
 </body>
 </html>
+
 
 
 
