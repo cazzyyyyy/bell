@@ -246,48 +246,37 @@ window.addEventListener("load", () => {
         envelopes.forEach((env,i) => setTimeout(() => { env.style.opacity="1"; env.style.transform="translateY(0)"; }, i*150));
     });
 
-	// Music Play / Pause
-let player;
+// Simple Play / Stop (No API, No Download)
 let isPlaying = false;
+const player = document.getElementById("musicPlayer");
+const button = document.getElementById("playBtn");
 
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('musicPlayer');
-}
-
-const tag = document.createElement('script');
-tag.src = "87tFbeaxsgA";
-document.body.appendChild(tag);
-
-document.getElementById("playBtn").addEventListener("click", () => {
-    if (!player) return;
-
+button.addEventListener("click", () => {
     if (!isPlaying) {
-        player.playVideo();
-        document.getElementById("playBtn").textContent = "⏸";
+       player.src = "https://www.youtube.com/embed/87tFbeaxsgA?autoplay=1";
+        button.textContent = "⏸";
         isPlaying = true;
     } else {
-        player.pauseVideo();
-        document.getElementById("playBtn").textContent = "▶";
+        player.src = "";
+        button.textContent = "▶";
         isPlaying = false;
     }
 });
 });
 </script>
 
-<!-- Hidden YouTube Player -->
 <iframe 
     id="musicPlayer"
-    width="0" 
+    width="0"
     height="0"
-    src="https://www.youtube.com/embed/87tFbeaxsgA?enablejsapi=1"
     frameborder="0"
     allow="autoplay">
 </iframe>
 
-
 	
 </body>
 </html>
+
 
 
 
