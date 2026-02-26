@@ -123,8 +123,11 @@ body.fade-out {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin: 140px auto 30px auto;  /* <-- ADD TOP SPACE */
+    margin-top: 140px;
+    margin-bottom: 30px;
     width: fit-content;
+    position: relative;
+    z-index: 2000;   /* ABOVE NAVBAR */
 }
 
 #searchInput {
@@ -271,6 +274,7 @@ function searchProfile() {
 	</script>
 </body>
 </html>
+
 
 
 
