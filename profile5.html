@@ -244,6 +244,11 @@ window.addEventListener("load", () => {
         sections.forEach(sec => { sec.style.opacity = "1"; sec.style.transform = "translateY(0)"; });
         envelopes.forEach((env,i) => setTimeout(() => { env.style.opacity="1"; env.style.transform="translateY(0)"; }, i*150));
     });
+// Simple Play / Stop (No API, No Download)
+let isPlaying = false;
+const player = document.getElementById("musicPlayer");
+const button = document.getElementById("playBtn");
+
 button.addEventListener("click", () => {
     if (!isPlaying) {
        player.src = "https://www.youtube.com/embed/87tFbeaxsgA?autoplay=1";
@@ -266,9 +271,9 @@ button.addEventListener("click", () => {
     allow="autoplay">
 </iframe>
 
-
 </body>
 </html>
+
 
 
 
