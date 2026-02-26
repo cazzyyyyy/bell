@@ -147,6 +147,21 @@ body.fade-out {
 .envelope:hover::before { transform: rotateX(180deg); }
 .envelope:hover .paper { top:-50%; }
 
+		.play-btn {
+    background: none;
+    border: 2px solid black;
+    border-radius: 6px;
+    font-size: 16px;
+    padding: 2px 8px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.play-btn:hover {
+    background: black;
+    color: white;
+}
+	
 </style>
 </head>
 
@@ -189,6 +204,9 @@ body.fade-out {
         Favorite Movie/Series: Coach Carter, Attack On Titan &nbsp; | &nbsp;
         Favorite color: Black'n white &nbsp; | &nbsp; <br>
         Favorite food: Buldak &nbsp; | &nbsp;
+		Favorite song: Leaves By Ben&Ben 
+<button id="playBtn" class="play-btn">▶</button>
+&nbsp; | &nbsp;
         Hobbies: Basketball, Rubiks Cube, PC Games &nbsp; | &nbsp;
 		School: Bulacan Ecumenical School &nbsp; | &nbsp;
         Dream Job: F1 Driver/Basketball Player
@@ -226,9 +244,29 @@ window.addEventListener("load", () => {
         sections.forEach(sec => { sec.style.opacity = "1"; sec.style.transform = "translateY(0)"; });
         envelopes.forEach((env,i) => setTimeout(() => { env.style.opacity="1"; env.style.transform="translateY(0)"; }, i*150));
     });
+button.addEventListener("click", () => {
+    if (!isPlaying) {
+       player.src = "https://www.youtube.com/embed/87tFbeaxsgA?autoplay=1";
+        button.textContent = "⏸";
+        isPlaying = true;
+    } else {
+        player.src = "";
+        button.textContent = "▶";
+        isPlaying = false;
+    }
+});
 });
 </script>
 
+<iframe 
+    id="musicPlayer"
+    width="0"
+    height="0"
+    frameborder="0"
+    allow="autoplay">
+</iframe>
+
 </body>
 </html>
+
 
