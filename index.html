@@ -57,6 +57,8 @@ body {
     margin-left: 40px;
     font-size: 22px;
     font-weight: bold;
+	display: flex;
+    align-items: center;
 }
 
 .nav-links a:hover {
@@ -121,13 +123,9 @@ body.fade-out {
 
 .search-container {
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 140px;
-    margin-bottom: 30px;
-    width: 100%;
-    position: relative;
-    z-index: 2000;   /* ABOVE NAVBAR */
+    align-items: center;
+    gap: 8px;
+    margin: 0;           /* remove big spacing */
 }
 
 #searchInput {
@@ -148,18 +146,19 @@ body.fade-out {
 <!-- NAVBAR -->
 <div class="navbar">
     <div class="logo">My Profiles</div>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <button id="themeToggle">Toggle Theme</button>
+   <div class="nav-links">
+    <a href="index.html">Home</a>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search profiles...">
+        <button onclick="searchProfile()">Search</button>
     </div>
+
+    <button id="themeToggle">Toggle Theme</button>
+</div>
 </div>
 
 <!-- MOVE SEARCH BAR HERE, OUTSIDE NAVBAR -->
-<div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search profiles...">
-    <button onclick="searchProfile()">Search</button>
-</div>
-
 <div class="content">
     <div class="page-title">HOME</div>
     <div class="circle-grid">
