@@ -37,32 +37,53 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: black;
-    padding: 25px 60px;
+    background: black;
+    padding: 15px 40px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .logo {
     color: white;
-    font-size: 32px;
+    font-size: 28px;
     font-weight: bold;
 }
 
-.nav-links a {
+
+.search-bar {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    width: 220px;
+}
+
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-right a {
     color: white;
     text-decoration: none;
-    margin-left: 40px;
-    font-size: 22px;
     font-weight: bold;
-	display: flex;
-    align-items: center;
 }
 
-.nav-links a:hover {
-    color: gray;
+.nav-right button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 /* CONTENT */
@@ -147,7 +168,7 @@ body.fade-out {
 <div class="navbar">
     
     <div class="nav-left">
-        <div class="logo">Hidden Profile</div>
+        <div class="logo">My Profile</div>
         <input type="text" placeholder="Search..." class="search-bar">
     </div>
 
