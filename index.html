@@ -169,7 +169,8 @@ body.fade-out {
     
     <div class="nav-left">
         <div class="logo">My Profile</div>
-        <input type="text" placeholder="Search..." class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search..." class="search-bar">
+<button onclick="searchProfile()" class="search-btn">Search</button>
     </div>
 
     <div class="nav-right">
@@ -292,6 +293,17 @@ function searchProfile() {
     alert("Profile not found.");
 }
 	</script>
+
+	<script>
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        searchProfile();
+    }
+});
+</script>
+	
 </body>
 </html>
 
