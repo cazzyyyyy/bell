@@ -236,35 +236,37 @@ body.fade-out { opacity: 0; }
 
 </div>
 
+    
     <script src="https://www.youtube.com/iframe_api"></script>
 <script>
 let player;
 let playerReady = false;
 let playing = false;
 
-// This function creates the YouTube playlist player
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('ytplayer', {
-        height: '60',
-        width: '300',
-        playerVars: {
-            listType: 'playlist',
-            list: 'PLDsYyiHcj-Cbl4-pgrXaENp1yeBGSdRis', // Your playlist ID
-            index: 81, // Start video index
-            autoplay: 0,
-            controls: 0,
-            loop: 1,
-            mute: 0
-        },
-        events: {
-            'onReady': () => { playerReady = true; }
-        }
-    });
-}
+window.onload = function() {
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('ytplayer', {
+            height: '60',
+            width: '300',
+            playerVars: {
+                listType: 'playlist',
+                list: 'PLDsYyiHcj-Cbl4-pgrXaENp1yeBGSdRis',
+                index: 81,
+                autoplay: 0,
+                controls: 0,
+                loop: 1,
+                mute: 1
+            },
+            events: {
+                'onReady': () => { playerReady = true; }
+            }
+        });
+    }
+    window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+};
 
-// Toggle play/pause when clicking the music box
 document.getElementById("musicBox").addEventListener("click", () => {
-    if (!playerReady) return; // wait until player is ready
+    if (!playerReady) return;
 
     if (!playing) {
         player.playVideo();
