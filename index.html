@@ -294,13 +294,15 @@ function searchProfile() {
 }
 	</script>
 
-	<script>
-const searchInput = document.getElementById("searchInput");
+<script>
+window.addEventListener("load", () => {
+    const searchInput = document.getElementById("searchInput");
 
-searchInput.addEventListener("keypress", function(e) {
-    if (e.key === "Enter") {
-        searchProfile();
-    }
+    searchInput.addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            searchProfile();
+        }
+    });
 });
 </script>
 	
