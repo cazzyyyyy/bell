@@ -188,20 +188,17 @@ body.fade-out { opacity: 0; }
         <strong>BIO:</strong><br><br>
         "Makulit at maingay man, ito ang section na hindi malilimutan ang mga masasaya na alaala ng buong taong 2025-2026. Sa hirap, kulit, at pag-sikap, sulit ang lahat ng aming pinag-daanan, dahil tulong-tulungan kaming lahat
         na ibuhat ang isa't isa upang makarating hanggang dulo. Dito man nagtatapos ang aming taon, pero hindi dito magtatapos ang lahat. Lalakas kami bilang isa, magtutulungan kaming lahat bilang isa,
-        at magtitiis ng hirap, bilang isang malaki Pamilya."
+        at magtitiis ng hirap, bilang isang malaking Pamilya."
     </div>
 
 <!-- MUSIC -->
 <div class="music-box" id="musicBox">
     <div class="music-circle" id="playBtn">▶</div>
     <div class="song-name">Secret Theme</div>
-
-    <!-- Small embedded YouTube player -->
-    <iframe id="ytplayer" width="300" height="60"
-        src="https://www.youtube.com/embed/6k8cpUkKK4c?autoplay=1&list=PLDsYyiHcj-Cbl4-pgrXaENp1yeBGSdRis&index=81&controls=1&loop=1&mute=1"
-        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-    </iframe>
+    <!-- YouTube player container -->
+    <div id="ytplayer"></div>
 </div>
+    
     <!-- MEMORIES -->
     <div class="section">
         <h3>MEMORIES:</h3>
@@ -238,38 +235,39 @@ body.fade-out { opacity: 0; }
     </div>
 
 </div>
-
+<script src="https://www.youtube.com/iframe_api"></script>
 <script>
-window.addEventListener("load", () => {
-    document.body.style.opacity = "1";
-});
-
-// MUSIC TOGGLE
+let player;
 let playing = false;
 
-// create hidden iframe
-const player = document.createElement("iframe");
-player.width = "0";
-player.height = "0";
-player.style.border = "0";
+// This function creates the player
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('ytplayer', {
+        height: '60',
+        width: '300',
+        playerVars: {
+            listType: 'playlist',
+            list: 'PLDsYyiHcj-Cbl4-pgrXaENp1yeBGSdRis',
+            index: 81,
+            autoplay: 0,
+            controls: 0,
+            loop: 1,
+            mute: 0
+        }
+    });
+}
 
-// proper autoplay and JS API enable
-player.allow = "autoplay";
-player.allowFullscreen = true;
-player.src = ""; // initially empty
-document.body.appendChild(player);
+// Toggle play/pause when clicking the music box
+document.getElementById("musicBox").addEventListener("click", () => {
+    if (!player) return; // wait for player to load
 
-const btn = document.getElementById("playBtn");
-const box = document.getElementById("musicBox");
-
-box.addEventListener("click", () => {
     if (!playing) {
-        player.src = "https://www.youtube.com/embed/6k8cpUkKK4c?autoplay=1&list=PLDsYyiHcj-Cbl4-pgrXaENp1yeBGSdRis&index=81&enablejsapi=1";
-        btn.textContent = "⏸";
+        player.playVideo();
+        document.getElementById("playBtn").textContent = "⏸";
         playing = true;
     } else {
-        player.src = ""; // stop the music
-        btn.textContent = "▶";
+        player.pauseVideo();
+        document.getElementById("playBtn").textContent = "▶";
         playing = false;
     }
 });
