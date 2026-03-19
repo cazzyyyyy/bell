@@ -234,7 +234,6 @@ body.fade-out { opacity: 0; }
 
 </div>
 
-<!-- MUSIC SCRIPT -->
 <script>
 window.addEventListener("load", () => {
     document.body.style.opacity = "1";
@@ -242,10 +241,17 @@ window.addEventListener("load", () => {
 
 // MUSIC TOGGLE
 let playing = false;
+
+// create hidden iframe
 const player = document.createElement("iframe");
 player.width = "0";
 player.height = "0";
+player.style.border = "0";
+
+// proper autoplay and JS API enable
 player.allow = "autoplay";
+player.allowFullscreen = true;
+player.src = ""; // initially empty
 document.body.appendChild(player);
 
 const btn = document.getElementById("playBtn");
@@ -253,11 +259,11 @@ const box = document.getElementById("musicBox");
 
 box.addEventListener("click", () => {
     if (!playing) {
-        player.src = "https://www.youtube.com/embed/6k8cpUkKK4c?autoplay=1&list=PLDsYyiHcj-Cbl4-pgrXaENp1yeBGSdRis&index=81";
+        player.src = "https://www.youtube.com/embed/6k8cpUkKK4c?autoplay=1&list=PLDsYyiHcj-Cbl4-pgrXaENp1yeBGSdRis&index=81&enablejsapi=1";
         btn.textContent = "⏸";
         playing = true;
     } else {
-        player.src = "";
+        player.src = ""; // stop the music
         btn.textContent = "▶";
         playing = false;
     }
